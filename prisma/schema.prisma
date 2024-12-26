@@ -1,0 +1,94 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+
+// should add username and image url
+model User{
+  id Int @id @unique @default(autoincrement())
+  mail String @unique
+  username String @default("")
+  imageUrl String @default("")
+  isAlumni Boolean @default(false)
+  posts Post[]
+  blogs Blog[]
+  interests String
+  messages Message[]
+  college College @relation(fields: [collegeId], references: [id])
+  collegeId Int
+  jobsCreated Job[]
+  webinars Webinar[]
+}
+
+model College{
+  id Int @id @unique @default(autoincrement())
+  name String @default("")
+  imageUrl String @default("")
+  user User[]
+  post Post[]
+  blog Blog[]
+  message Message[]
+  job Job[]
+  webinar Webinar[]
+}
+
+model Post{
+  id Int @id @unique @default(autoincrement())
+  title String
+  image String
+  description String
+  college College @relation(fields: [collegeId], references: [id])
+  collegeId Int
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+}
+
+model Message{ // or reply
+  id Int @id @unique @default(autoincrement())
+  content String
+  general Boolean
+  author User @relation(fields: [authorId], references: [id])
+  authorUsername String
+  authorImageUrl String
+  authorId Int
+  recieverId Int
+  college College @relation(fields: [collegeId], references: [id])
+  collegeId Int
+}
+
+model Blog{
+  id Int @id @unique @default(autoincrement())
+  title String @default("")
+  content String
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+  college College @relation(fields: [collegeId], references: [id])
+  collegeId Int 
+}
+
+model Job{
+  id Int @id @unique @default(autoincrement())
+  title String 
+  content String
+  author User @relation(fields: [authorId], references: [id])
+  authorId Int
+  college College @relation(fields: [collegeId], references: [id])
+  collegeId Int
+}
+
+model Webinar{
+  id Int @id @unique @default(autoincrement())
+  date DateTime
+  title String
+  description String
+  public Boolean @default(true)
+  author User @relation(fields: [authorId] , references: [id])
+  authorId Int
+  college College @relation(fields: [collegeId], references: [id])
+  collegeId Int
+}

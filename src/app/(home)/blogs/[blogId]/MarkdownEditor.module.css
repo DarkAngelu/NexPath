@@ -1,0 +1,129 @@
+@keyframes gradientAnimation {
+	0% {
+		background-position: 0% 0%;
+	}
+	50% {
+		background-position: 100% 100%;
+	}
+	100% {
+		background-position: 0% 0%;
+	}
+}
+
+@keyframes ripple {
+	0% {
+		transform: scale(0);
+		opacity: 1;
+	}
+	100% {
+		transform: scale(4);
+		opacity: 0;
+	}
+}
+.container {
+	display: flex;
+	width: 100%;
+	height: 80vh;
+	max-width: 1200px;
+	margin: 0 auto;
+	border-radius: 8px;
+	overflow: hidden;
+	flex-direction: column;
+	align-items: center;
+	padding: 16px;
+	gap: 16px;
+}
+
+.editorContainer {
+	width: 50%;
+	height: 100%;
+	display: flex;
+	flex-direction: column;
+}
+
+.textarea {
+	flex: 1;
+	border: none;
+	padding: 20px;
+	box-sizing: border-box;
+	font-size: 16px;
+	outline: none;
+	resize: none;
+}
+
+.preview {
+	width: 50%;
+	height: 100%;
+	padding: 20px;
+	box-sizing: border-box;
+	overflow-y: auto;
+	background-color: #0000;
+	color: #fff;
+	font-size: 16px;
+}
+
+.preview h1 {
+	font-size: 2em;
+	margin-bottom: 0.5em;
+}
+
+.preview h2 {
+	font-size: 1.5em;
+	margin-bottom: 0.5em;
+}
+
+.preview h3 {
+	font-size: 1.17em;
+	margin-bottom: 0.5em;
+}
+
+.buttonGroup {
+	display: flex;
+	gap: 8px;
+}
+
+.showButton,
+.hideButton {
+	background-image: #1a2980;
+	margin: 10px;
+	font-size: 15px;
+	padding: 15px 45px;
+	text-align: center;
+	text-transform: uppercase;
+	transition: 0.5s;
+	background-size: 200% auto;
+	color: white;
+	box-shadow: 0 0 20px #eee;
+	border: 0px;
+	border-radius: 10px;
+	display: block;
+}
+
+.showButton {
+	background-color: #28a745;
+	color: white;
+}
+
+.showButton:hover {
+	transform: scale(1.05);
+	background-position: right center;
+	color: #fff;
+	text-decoration: none;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	border: 1px solid black;
+	cursor: pointer;
+}
+.hideButton {
+	background-color: #dc3545;
+	color: white;
+}
+
+.hideButton:hover {
+	transform: scale(1.05);
+	background-position: right center;
+	color: #fff;
+	text-decoration: none;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+	border: 1px solid black;
+	cursor: pointer;
+}
